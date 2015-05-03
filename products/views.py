@@ -2,10 +2,10 @@ from django.shortcuts import render
 from products.models import Product
 
 # Create your views here.
-
 def home(request):
+  products = Product.objects.all()
   template = 'products/home.html'
-  ctx = locals()
+  ctx = {'products' : products}
   return render(request, template, ctx)
 
 

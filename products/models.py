@@ -16,3 +16,15 @@ class Product(models.Model):
 
   def get_price(self):
     return self.price
+
+
+class ProductImage(models.Model):
+  product = models.ForeignKey(Product)
+  image = models.ImageField(upload_to='products/images')
+  featured = models.BooleanField(default=False)
+  thumbnail = models.BooleanField(default=False)
+  updated_time = models.DateTimeField(auto_now_add=False, auto_now=True)
+  active = models.BooleanField(default=True)
+
+  def __unicode__(self):
+    return self.product.title

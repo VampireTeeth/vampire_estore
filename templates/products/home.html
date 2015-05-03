@@ -13,4 +13,38 @@
   </p>
   
 </div>
+
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Images</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead> 
+    <tbody>
+      {% for product in products %}
+      <div class="col-md-4">
+        <tr>
+          <td>
+            {% for pi in product.productimage_set.all %}
+            <img style="max-height: 140px; max-width=140px;" class="img-thumbnail" src="{{ MEDIA_URL }}{{ pi.image }}" />
+            {% endfor %}
+          </td>
+          <td>
+            <a href="#">
+              {{product.title}}
+            </a>
+          </td>
+          <td>
+            &dollar;{{product.price}}
+          </td>
+        </tr>
+      </div>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
